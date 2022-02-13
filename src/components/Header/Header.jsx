@@ -1,10 +1,15 @@
 import React from "react";
-import { HeaderContainer, Navigation, NavLink } from "./Header.style.jsx";
+import {
+  HeaderContainer,
+  HeaderTitle,
+  Navigation,
+  NavLink,
+} from "./Header.style.jsx";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <h1>React todo</h1>
+      <HeaderTitle>React todo</HeaderTitle>
       <Navigation>
         <NavLink to="/">Главная</NavLink>
         <NavLink to="/todos">Список todo</NavLink>

@@ -13,6 +13,11 @@ export const HeaderContainer = styled.header`
   }
 `;
 
+export const HeaderTitle = styled.h1`
+  user-select: none;
+  cursor: default;
+`;
+
 export const Navigation = styled.nav`
   display: flex;
   margin-top: 8px;
