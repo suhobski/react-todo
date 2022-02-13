@@ -12,15 +12,10 @@ const GlobalStyle = createGlobalStyle`
   body,
   #root {
     height: 100%;
-    color: #528e86;
   }
 
   body {
     min-height: 100vh;
-  }
-
-  ul, li {
-    list-style-type: none;
   }
 
   a {
