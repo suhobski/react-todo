@@ -1,15 +1,15 @@
 import React from "react";
-import { HomeContainer } from "./Home.styles";
+import { HomeContainer, HomeSecondTitle, HomeTitle } from "./Home.styles";
 
 const Main = () => {
   return (
     <HomeContainer>
-      <h2>Тестовое задание React</h2>
+      <HomeTitle>Тестовое задание React</HomeTitle>
       <p>
         Нужно разработать приложение со списком todo в формате Single Page
         Application.
       </p>
-      <b>Требования к приложению.</b>
+      <HomeSecondTitle>Требования к приложению.</HomeSecondTitle>
       <ol>
         <li>Приложение должно содержать 2 страницы: главная и список todo</li>
         <li>Переход между страницами должен быть реализован через navbar</li>
