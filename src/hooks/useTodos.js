@@ -36,7 +36,6 @@ function useTodos() {
       const title = data.get("title");
       const completed = Boolean(data.get("completed"));
       const newTodo = { userId, id, title, completed };
-      console.log(newTodo);
       dispatch(addTodoAction(newTodo));
     },
     [todos.length, dispatch]
