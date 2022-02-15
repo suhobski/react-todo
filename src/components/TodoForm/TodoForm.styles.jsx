@@ -18,13 +18,6 @@ export const TodoFormContainer = styled.form`
   }
 `;
 
-export const TodoInputTitle = styled.input.attrs({ type: "text" })`
-  font-size: 16px;
-  border: none;
-  background-color: #e3fcea;
-  outline: none;
-`;
-
 export const TodoFormButton = styled.button`
   width: 60px;
   height: 24px;

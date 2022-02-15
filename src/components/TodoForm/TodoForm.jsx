@@ -1,12 +1,9 @@
-import React, { useRef } from "react";
-import { Checkbox } from "../Checkbox/Checkbox";
-import {
-  TodoFormButton,
-  TodoFormContainer,
-  TodoInputTitle,
-} from "./TodoForm.styles";
+import React, { useRef } from 'react';
+import Checkbox from '../Checkbox/Checkbox';
+import TodoInputText from '../formComponents/TodoInputText.style';
+import { TodoFormButton, TodoFormContainer } from './TodoForm.styles';
 
-const TodoForm = ({ submitTodo }) => {
+function TodoForm({ submitTodo }) {
   const formRef = useRef();
 
   const handleSubmit = (e) => {
@@ -19,7 +16,7 @@ const TodoForm = ({ submitTodo }) => {
   return (
     <TodoFormContainer onSubmit={handleSubmit} ref={formRef}>
       <Checkbox type="checkbox" name="completed" id="completed" />
-      <TodoInputTitle
+      <TodoInputText
         type="text"
         name="title"
         id="title"
@@ -28,6 +25,6 @@ const TodoForm = ({ submitTodo }) => {
       <TodoFormButton type="submit">Add</TodoFormButton>
     </TodoFormContainer>
   );
-};
+}
 
 export default TodoForm;

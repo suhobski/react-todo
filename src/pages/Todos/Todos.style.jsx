@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const TodosContainer = styled.section`
+const TodosContainer = styled.section`
   padding: 8px 16px;
 `;
+
+export default TodosContainer;

@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   HeaderContainer,
   HeaderTitle,
   Navigation,
   NavLink,
-} from "./Header.style.jsx";
+} from './Header.style';
 
-const Header = () => {
+function Header() {
   return (
     <HeaderContainer>
       <HeaderTitle>React todo</HeaderTitle>
@@ -16,6 +16,6 @@ const Header = () => {
       </Navigation>
     </HeaderContainer>
   );
-};
+}
 
 export default Header;

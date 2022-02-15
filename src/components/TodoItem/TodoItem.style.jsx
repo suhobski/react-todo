@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { ReactComponent as EditIcon } from "../../assets/img/edit.svg";
-import { ReactComponent as DeleteIcon } from "../../assets/img/delete.svg";
+import styled from 'styled-components';
+import { ReactComponent as EditIcon } from '../../assets/img/edit.svg';
+import { ReactComponent as DeleteIcon } from '../../assets/img/delete.svg';
 
 export const TodoContainer = styled.div`
   display: grid;
@@ -25,10 +25,13 @@ export const ButtonsContainer = styled.div`
   align-items: center;
 `;
 
-export const Edit = styled(EditIcon)`
+export const EditSubmit = styled(EditIcon)`
+  visibility: ${(props) => props.visible};
+  height: 24px;
+  margin-left: 12px;
   padding: 4px;
   border-radius: 8px;
-  background-color: lightblue;
+  background-color: #9cffb7;
   cursor: pointer;
 
   &:hover {
@@ -37,7 +40,6 @@ export const Edit = styled(EditIcon)`
 `;
 
 export const Delete = styled(DeleteIcon)`
-  width: 24px;
   height: 24px;
   margin-left: 12px;
   padding: 4px;

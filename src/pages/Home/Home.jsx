@@ -1,7 +1,7 @@
-import React from "react";
-import { HomeContainer, HomeSecondTitle, HomeTitle } from "./Home.styles";
+import React from 'react';
+import { HomeContainer, HomeSecondTitle, HomeTitle } from './Home.styles';
 
-const Main = () => {
+function Home() {
   return (
     <HomeContainer>
       <HomeTitle>Тестовое задание React</HomeTitle>
@@ -32,6 +32,6 @@ const Main = () => {
       </ol>
     </HomeContainer>
   );
-};
+}
 
-export default Main;
+export default Home;

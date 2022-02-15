@@ -1,6 +1,9 @@
-const API_URL = "https://jsonplaceholder.typicode.com";
+const API_URL = 'https://jsonplaceholder.typicode.com';
 
 export async function httpGetTodos() {
   const responce = await fetch(`${API_URL}/todos`);
-  return await responce.json();
+  const data = await responce.json();
+  return data;
 }
+
+export default httpGetTodos;

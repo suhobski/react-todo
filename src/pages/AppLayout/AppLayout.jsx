@@ -1,14 +1,14 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import useTodos from "../../hooks/useTodos";
-import Home from "../Home/Home";
-import Todos from "../Todos/Todos";
-import { AppContainer } from "./AppLayout.style";
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+// import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import useTodos from '../../hooks/useTodos';
+import Home from '../Home/Home';
+import Todos from '../Todos/Todos';
+import AppContainer from './AppLayout.style';
 
-const AppLayout = () => {
-  const { todos, isPendingTodos, submitTodo, removeTodo } = useTodos();
+function AppLayout() {
+  const { todos, isPendingTodos, error, submitTodo, removeTodo } = useTodos();
 
   return (
     <AppContainer>
@@ -23,13 +23,15 @@ const AppLayout = () => {
               isPendingTodos={isPendingTodos}
               submitTodo={submitTodo}
               removeTodo={removeTodo}
+              error={error}
             />
           }
         />
+        <Route path="*" element={<Navigate />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </AppContainer>
   );
-};
+}
 
 export default AppLayout;

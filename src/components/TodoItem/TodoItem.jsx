@@ -1,30 +1,74 @@
-import React from "react";
-import { Checkbox } from "../Checkbox/Checkbox";
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  editTodoAction,
+  setEditTodoNowAction,
+} from '../../redux/actions/todosActions';
+import Checkbox from '../Checkbox/Checkbox';
+import TodoText from '../formComponents/TodoText.style';
+import TodoInputText from '../formComponents/TodoInputText.style';
 import {
   ButtonsContainer,
   Delete,
-  Edit,
+  EditSubmit,
   TodoContainer,
-} from "./TodoItem.style";
+} from './TodoItem.style';
 
-const TodoItem = ({ todo, removeTodo }) => {
+function TodoItem({ todo, removeTodo }) {
+  const dispatch = useDispatch();
+  const inputTitleRef = useRef();
+
+  const handleChangeCompleted = () => {
+    const editedTodo = {
+      ...todo,
+      completed: !todo.completed,
+    };
+    dispatch(editTodoAction(editedTodo));
+  };
+
+  const handleChangeTitle = () => {
+    const currentTitle = inputTitleRef.current.value;
+    if (!currentTitle) {
+      return;
+    }
+    const editedTodo = {
+      ...todo,
+      title: currentTitle,
+    };
+    dispatch(editTodoAction(editedTodo));
+  };
+
+  const handleClickText = () => {
+    dispatch(setEditTodoNowAction(todo.id));
+  };
+
   return (
-    <TodoContainer key={todo.id}>
+    <TodoContainer>
       <Checkbox
-        defaultChecked={todo.completed}
+        checked={todo.completed}
         type="checkbox"
-        name="completed"
-        id={todo.completed + todo.id}
+        onChange={handleChangeCompleted}
       />
-      <span>
-        {todo.title} - {todo.id}
-      </span>
+      {todo?.isEditNow ? (
+        <TodoInputText
+          ref={inputTitleRef}
+          type="text"
+          name="title"
+          defaultValue={todo.title}
+          autoFocus
+        />
+      ) : (
+        <TodoText onClick={handleClickText}>{todo.title}</TodoText>
+      )}
       <ButtonsContainer>
-        <Edit />
-        <Delete onClick={() => removeTodo(todo.id)} />
+        <EditSubmit
+          visible={todo?.isEditNow ? 'visible' : 'hidden'}
+          onClick={handleChangeTitle}
+        />
+        <Delete title="Удалить заметку" onClick={() => removeTodo(todo.id)} />
       </ButtonsContainer>
     </TodoContainer>
   );
-};
+}
 
 export default TodoItem;

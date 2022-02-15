@@ -1,23 +1,27 @@
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTodoAction,
   fetchAllTodosAction,
   removeTodoAction,
-} from "../redux/actions/todosActions";
-import { httpGetTodos } from "./requests";
+} from '../redux/actions/todosActions';
+import findCurrentId from '../utils/todosUtils';
+import { httpGetTodos } from './requests';
 
 function useTodos() {
   const todos = useSelector((state) => state.todos);
   const [isPendingTodos, setPendingTodos] = useState(false);
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   const getTodos = useCallback(async () => {
     try {
       setPendingTodos(true);
-      const todos = await httpGetTodos();
-      dispatch(fetchAllTodosAction(todos));
+      const fetchedTodos = await httpGetTodos();
+      dispatch(fetchAllTodosAction(fetchedTodos));
+      console.log('fetch todos');
     } catch (err) {
+      setError(err);
       console.log(err);
     } finally {
       setPendingTodos(false);
@@ -30,15 +34,18 @@ function useTodos() {
 
   const submitTodo = useCallback(
     (data) => {
-      const userId = data.get("userId");
-      // TODO: change id to more specific
-      const id = todos.length + 1;
-      const title = data.get("title");
-      const completed = Boolean(data.get("completed"));
+      const title = data.get('title');
+      if (!title) {
+        return;
+      }
+
+      const userId = data.get('userId');
+      const id = findCurrentId(todos) + 1;
+      const completed = Boolean(data.get('completed'));
       const newTodo = { userId, id, title, completed };
       dispatch(addTodoAction(newTodo));
     },
-    [todos.length, dispatch]
+    [todos.length, todos, dispatch]
   );
 
   const removeTodo = useCallback(
@@ -51,6 +58,7 @@ function useTodos() {
   return {
     todos,
     isPendingTodos,
+    error,
     submitTodo,
     removeTodo,
   };
