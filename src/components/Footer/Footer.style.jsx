@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const FooterContainer = styled.footer`
+const FooterContainer = styled.footer`
   border-top: 2px solid #65655a;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
+export default FooterContainer;

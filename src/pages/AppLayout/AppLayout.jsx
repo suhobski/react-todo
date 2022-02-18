@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-// import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import useTodos from '../../hooks/useTodos';
 import Home from '../Home/Home';
@@ -29,7 +29,7 @@ function AppLayout() {
         />
         <Route path="*" element={<Navigate />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </AppContainer>
   );
 }
