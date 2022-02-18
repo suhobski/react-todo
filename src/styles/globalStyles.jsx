@@ -5,23 +5,26 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: inherit;
     color: inherit;
   }
-
+  
   html,
   body,
   #root {
     height: 100%;
   }
-
+  
   body {
     min-height: 100vh;
     background-color: #eee;
   }
-
+  
   a {
     text-decoration: none;
+  }
+
+  select {
+    font-size: inherit;
   }
 `;
 
