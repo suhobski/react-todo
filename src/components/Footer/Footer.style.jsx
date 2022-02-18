@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  border-top: 2px solid #65655a;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 2px solid #65655a;
+  font-size: 14px;
 `;
 
 export default FooterContainer;
