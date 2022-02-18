@@ -11,7 +11,7 @@ export default function Pagination({
   return (
     <PaginationContainer>
       <label htmlFor="page-select">
-        Current page:
+        Page:
         <select
           onChange={changeCurrentPage}
           value={currentPage}
