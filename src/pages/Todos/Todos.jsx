@@ -3,7 +3,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import TodoForm from '../../components/TodoForm/TodoForm';
 import TodoItem from '../../components/TodoItem/TodoItem';
 import usePagination from '../../hooks/usePagination';
-import TodosContainer from './Todos.style';
+import { TodosContainer, Error } from './Todos.style';
 
 function Todos({ isPendingTodos, error, submitTodo, removeTodo }) {
   const {
@@ -26,8 +26,6 @@ function Todos({ isPendingTodos, error, submitTodo, removeTodo }) {
       />
       <TodoForm submitTodo={submitTodo} />
 
-      {error && <p>{error.message}</p>}
-
       {isPendingTodos ? (
         <p>Загрузка</p>
       ) : (
@@ -35,6 +33,7 @@ function Todos({ isPendingTodos, error, submitTodo, removeTodo }) {
           <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
         ))
       )}
+      {error && <Error>{error.message}</Error>}
     </TodosContainer>
   );
 }

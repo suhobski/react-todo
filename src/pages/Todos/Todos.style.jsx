@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-const TodosContainer = styled.section`
+export const TodosContainer = styled.section`
   padding: 8px 16px;
   overflow-y: auto;
 `;
 
-export default TodosContainer;
+export const Error = styled.p`
+  color: red;
+  font-size: 14px;
+  text-align: center;
+`;
