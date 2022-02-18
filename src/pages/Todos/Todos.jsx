@@ -17,15 +17,6 @@ function Todos({ isPendingTodos, error, submitTodo, removeTodo }) {
 
   return (
     <TodosContainer>
-      <TodoForm submitTodo={submitTodo} />
-      {error && <p>{error.message}</p>}
-      {isPendingTodos ? (
-        <p>Загрузка</p>
-      ) : (
-        currentTodos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
-        ))
-      )}
       <Pagination
         pagesNumbers={pagesNumbers}
         currentPage={currentPage}
@@ -33,6 +24,17 @@ function Todos({ isPendingTodos, error, submitTodo, removeTodo }) {
         changeCurrentPage={changeCurrentPage}
         allTodosCount={allTodosCount}
       />
+      <TodoForm submitTodo={submitTodo} />
+
+      {error && <p>{error.message}</p>}
+
+      {isPendingTodos ? (
+        <p>Загрузка</p>
+      ) : (
+        currentTodos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
+        ))
+      )}
     </TodosContainer>
   );
 }
