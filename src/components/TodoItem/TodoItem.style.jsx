@@ -12,7 +12,6 @@ export const TodoContainer = styled.div`
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 
   &:hover {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
