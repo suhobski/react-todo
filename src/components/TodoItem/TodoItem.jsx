@@ -42,6 +42,12 @@ function TodoItem({ todo, removeTodo }) {
     dispatch(setEditTodoNowAction(todo.id));
   };
 
+  const handleTitleKeyPress = (e) => {
+    if (e.ctrlKey && e.code === 'Enter') {
+      handleChangeTitle();
+    }
+  };
+
   return (
     <TodoContainer>
       <Checkbox
@@ -51,6 +57,7 @@ function TodoItem({ todo, removeTodo }) {
       />
       {todo?.isEditNow ? (
         <TodoInputText
+          onKeyPress={handleTitleKeyPress}
           ref={inputTitleRef}
           type="text"
           name="title"
