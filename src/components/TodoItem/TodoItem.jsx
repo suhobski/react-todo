@@ -71,9 +71,7 @@ function TodoItem({ todo, removeTodo }) {
           autoFocus
         />
       ) : (
-        <TodoText onClick={handleClickText}>
-          {todo.title} = {todo.id}
-        </TodoText>
+        <TodoText onClick={handleClickText}>{todo.title}</TodoText>
       )}
       <ButtonsContainer>
         <EditSubmit
