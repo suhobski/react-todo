@@ -13,6 +13,13 @@ const GlobalStyle = createGlobalStyle`
   #root {
     height: 100%;
   }
+
+  /* убирает изменение ширины страницы при появлении/удалении 
+  полосы прокрутки */
+  html {
+    width:100vw;
+    overflow-x:hidden;
+  }
   
   body {
     min-height: 100vh;
