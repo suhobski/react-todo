@@ -19,9 +19,15 @@ function TodoItem({ todo, removeTodo }) {
   const inputTitleRef = useRef();
 
   const handleChangeCompleted = () => {
+    const completed = !todo.completed;
+    let { title } = todo;
+    if (inputTitleRef.current) {
+      title = inputTitleRef.current.value;
+    }
     const editedTodo = {
       ...todo,
-      completed: !todo.completed,
+      title,
+      completed,
     };
     dispatch(editTodoAction(editedTodo));
   };
