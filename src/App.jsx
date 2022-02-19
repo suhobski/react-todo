@@ -12,7 +12,7 @@ function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <ReduxProvider store={store}>
-        <BrowserRouter basename="react-test">
+        <BrowserRouter basename="react-todo">
           <GlobalStyle />
           <AppLayout />
         </BrowserRouter>
