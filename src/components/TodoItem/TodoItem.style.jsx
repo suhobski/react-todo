@@ -4,7 +4,7 @@ import { ReactComponent as DeleteIcon } from '../../assets/img/delete.svg';
 
 export const TodoContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(120px, 1fr) auto;
   align-items: center;
   column-gap: 12px;
   margin: 6px 0;
