@@ -42,11 +42,10 @@ const todosReducer = (state = defaultState, action) => {
 
     case SET_EDIT_TODO_NOW: {
       const todos = state.todos.map((todo) => {
-        if (todo.isEditNow) {
-          todo.isEditNow = false;
-        }
         if (todo.id === action.todoId) {
-          todo.isEditNow = true;
+          todo.isEditNow = !todo?.isEditNow;
+        } else if (todo.isEditNow) {
+          todo.isEditNow = false;
         }
         return todo;
       });

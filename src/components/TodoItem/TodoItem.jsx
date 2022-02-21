@@ -5,24 +5,24 @@ import {
   setEditTodoNowAction,
 } from '../../redux/actions/todosActions';
 import Checkbox from '../Checkbox/Checkbox';
-import TodoText from '../formComponents/TodoText.style';
-import TodoInputText from '../formComponents/TodoInputText.style';
 import {
-  ButtonsContainer,
-  Delete,
-  EditSubmit,
-  TodoContainer,
-} from './TodoItem.style';
+  CancelButton,
+  DeleteButton,
+  EditButton,
+} from '../formComponents/formButtons';
+import TodoInputText from '../formComponents/TodoInputText.style';
+import { ButtonsContainer, TodoContainer } from './TodoItem.style';
 
 function TodoItem({ todo, removeTodo }) {
   const dispatch = useDispatch();
-  const inputTitleRef = useRef();
+  const completedRef = useRef();
+  const titleRef = useRef();
 
-  const handleChangeCompleted = () => {
-    const completed = !todo.completed;
-    let { title } = todo;
-    if (inputTitleRef.current) {
-      title = inputTitleRef.current.value;
+  const handleSubmit = () => {
+    const completed = completedRef.current.checked;
+    const title = titleRef.current.value;
+    if (!title) {
+      return;
     }
     const editedTodo = {
       ...todo,
@@ -32,54 +32,49 @@ function TodoItem({ todo, removeTodo }) {
     dispatch(editTodoAction(editedTodo));
   };
 
-  const handleChangeTitle = () => {
-    const currentTitle = inputTitleRef.current.value;
-    if (!currentTitle) {
-      return;
-    }
-    const editedTodo = {
-      ...todo,
-      title: currentTitle,
-    };
-    dispatch(editTodoAction(editedTodo));
-  };
-
-  const handleClickText = () => {
+  const handleTitleFocus = () => {
     dispatch(setEditTodoNowAction(todo.id));
   };
 
   const handleTitleKeyPress = (e) => {
     if (e.ctrlKey && e.code === 'Enter') {
-      handleChangeTitle();
+      titleRef.current.blur();
+      handleSubmit();
     }
   };
 
+  const handleCancelClick = () => {
+    titleRef.current.value = todo.title;
+    dispatch(setEditTodoNowAction(todo.id));
+  };
+
+  console.log(todo?.isEditNow);
+
   return (
-    <TodoContainer>
+    <TodoContainer as="form" onSubmit={handleSubmit}>
       <Checkbox
-        checked={todo.completed}
-        type="checkbox"
-        onChange={handleChangeCompleted}
+        ref={completedRef}
+        defaultChecked={todo.completed}
+        value="completed"
+        onChange={handleSubmit}
+      />
+      <TodoInputText
+        onClick={handleTitleFocus}
+        onKeyPress={handleTitleKeyPress}
+        ref={titleRef}
+        name="title"
+        defaultValue={todo.title}
       />
       {todo?.isEditNow ? (
-        <TodoInputText
-          onKeyPress={handleTitleKeyPress}
-          ref={inputTitleRef}
-          type="text"
-          name="title"
-          defaultValue={todo.title}
-          autoFocus
-        />
+        <ButtonsContainer>
+          <EditButton onClick={handleSubmit} />
+          <CancelButton onClick={handleCancelClick} />
+        </ButtonsContainer>
       ) : (
-        <TodoText onClick={handleClickText}>{todo.title}</TodoText>
+        <ButtonsContainer>
+          <DeleteButton onClick={() => removeTodo(todo.id)} />
+        </ButtonsContainer>
       )}
-      <ButtonsContainer>
-        <EditSubmit
-          visible={todo?.isEditNow ? 'visible' : 'hidden'}
-          onClick={handleChangeTitle}
-        />
-        <Delete title="Удалить заметку" onClick={() => removeTodo(todo.id)} />
-      </ButtonsContainer>
     </TodoContainer>
   );
 }
