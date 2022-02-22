@@ -33,6 +33,9 @@ function TodoItem({ todo, removeTodo }) {
   };
 
   const handleTitleFocus = () => {
+    if (todo?.isEditNow) {
+      return;
+    }
     dispatch(setEditTodoNowAction(todo.id));
   };
 
