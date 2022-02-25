@@ -11,8 +11,8 @@ function Header() {
     <HeaderContainer>
       <HeaderTitle>React todo</HeaderTitle>
       <Navigation>
-        <NavLink to="/">Главная</NavLink>
-        <NavLink to="/todos">Список todo</NavLink>
+        <NavLink to="/react-todo">Главная</NavLink>
+        <NavLink to="/react-todo/todo-list">Список todo</NavLink>
       </Navigation>
     </HeaderContainer>
   );
