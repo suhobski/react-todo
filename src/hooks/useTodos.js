@@ -5,7 +5,6 @@ import {
   fetchAllTodosAction,
   removeTodoAction,
 } from '../redux/actions/todosActions';
-import findCurrentId from '../utils/todosUtils';
 import { httpGetTodos } from './requests';
 
 function useTodos() {
@@ -33,19 +32,10 @@ function useTodos() {
   }, [getTodos]);
 
   const submitTodo = useCallback(
-    (data) => {
-      const title = data.get('title');
-      if (!title) {
-        return;
-      }
-
-      const userId = data.get('userId');
-      const id = findCurrentId(todos) + 1;
-      const completed = Boolean(data.get('completed'));
-      const newTodo = { userId, id, title, completed };
+    (newTodo) => {
       dispatch(addTodoAction(newTodo));
     },
-    [todos.length, todos, dispatch]
+    [dispatch]
   );
 
   const removeTodo = useCallback(

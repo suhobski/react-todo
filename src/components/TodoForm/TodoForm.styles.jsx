@@ -5,7 +5,6 @@ export const TodoFormContainer = styled.form`
   grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: 12px;
-  height: 50px;
   margin: 6px 0;
   padding: 12px;
   background-color: ${(props) => (props.isActive ? '#fff' : '#ddd')};

@@ -10,8 +10,9 @@ import {
   DeleteButton,
   EditButton,
 } from '../formComponents/formButtons';
+import FormContainer from '../formComponents/FormContainer';
 import TodoInputText from '../formComponents/TodoInputText.style';
-import { ButtonsContainer, TodoContainer } from './TodoItem.style';
+import { ButtonsContainer } from './TodoItem.style';
 
 function TodoItem({ todo, removeTodo }) {
   const dispatch = useDispatch();
@@ -21,14 +22,17 @@ function TodoItem({ todo, removeTodo }) {
   const handleSubmit = () => {
     const completed = completedRef.current.checked;
     const title = titleRef.current.value;
+
     if (!title) {
       return;
     }
+
     const editedTodo = {
       ...todo,
       title,
       completed,
     };
+
     dispatch(editTodoAction(editedTodo));
   };
 
@@ -51,10 +55,8 @@ function TodoItem({ todo, removeTodo }) {
     dispatch(setEditTodoNowAction(todo.id));
   };
 
-  console.log(todo?.isEditNow);
-
   return (
-    <TodoContainer as="form" onSubmit={handleSubmit}>
+    <FormContainer as="form" onSubmit={handleSubmit}>
       <Checkbox
         ref={completedRef}
         defaultChecked={todo.completed}
@@ -78,7 +80,7 @@ function TodoItem({ todo, removeTodo }) {
           <DeleteButton onClick={() => removeTodo(todo.id)} />
         </ButtonsContainer>
       )}
-    </TodoContainer>
+    </FormContainer>
   );
 }
 

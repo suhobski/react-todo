@@ -1,52 +1,74 @@
 import React, { useRef, useState } from 'react';
+import { nanoid } from 'nanoid';
 import Checkbox from '../Checkbox/Checkbox';
+import FormContainer from '../formComponents/FormContainer';
 import TodoInputText from '../formComponents/TodoInputText.style';
-import { TodoFormButton, TodoFormContainer } from './TodoForm.styles';
+import { TodoFormButton } from './TodoForm.styles';
 
 function TodoForm({ submitTodo }) {
   const [isActive, setActive] = useState(false);
   const formRef = useRef();
-  const inputTextRef = useRef();
+  const completedRef = useRef();
+  const titleRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const title = data.get('title');
+    const title = titleRef.current.value;
     if (!title) {
-      inputTextRef.current.focus();
+      titleRef.current.focus();
       return;
     }
-    submitTodo(data);
+
+    const completed = completedRef.current.checked;
+    const id = nanoid();
+    const newTodo = { id, title, completed };
+
+    submitTodo(newTodo);
     formRef.current.reset();
-    inputTextRef.current.blur();
+    titleRef.current.blur();
     setActive(false);
   };
 
   const handleFormClick = () => {
-    inputTextRef.current.focus();
+    titleRef.current.focus();
     if (isActive) {
       return;
     }
     setActive(true);
   };
 
+  const handleTitleKeyPress = (e) => {
+    if (e.ctrlKey && e.code === 'Enter') {
+      titleRef.current.blur();
+      handleSubmit(e);
+    }
+  };
+
   return (
-    <TodoFormContainer
+    <FormContainer
       onSubmit={handleSubmit}
       onClick={handleFormClick}
       ref={formRef}
-      isActive={isActive}
+      background={isActive ? '#fff' : '#ddd'}
     >
-      {isActive && <Checkbox type="checkbox" name="completed" id="completed" />}
+      {isActive && (
+        <Checkbox
+          ref={completedRef}
+          type="checkbox"
+          name="completed"
+          id="completed"
+        />
+      )}
       <TodoInputText
-        ref={inputTextRef}
+        onKeyPress={handleTitleKeyPress}
+        ref={titleRef}
         type="text"
         name="title"
         id="title"
         placeholder="write a new task"
       />
       {isActive && <TodoFormButton type="submit">Add</TodoFormButton>}
-    </TodoFormContainer>
+    </FormContainer>
   );
 }
 
