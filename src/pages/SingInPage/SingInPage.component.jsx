@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Button from '../../components/Button/Button.styles';
 import FormInput from '../../components/formComponents/FormInput/FormInput.component';
-import { FormWrap, SingInPageWrap } from './SignInPage.styles';
+import { FormFooter, FormWrap, SingInPageWrap } from './SignInPage.styles';
 
 function SingInPage() {
   const [email, setEmail] = useState('');
@@ -33,7 +34,10 @@ function SingInPage() {
           value={password}
           handleChange={(e) => setPassword(e.target.value)}
         />
-        <input type="submit" value="SIGN IN" />
+        <FormFooter>
+          <Button type="submit">SIGN IN</Button>
+          <Button type="submit">SIGN IN WITH GOOGLE</Button>
+        </FormFooter>
       </FormWrap>
     </SingInPageWrap>
   );
