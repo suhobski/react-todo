@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import useTodos from '../../hooks/useTodos';
 import Home from '../Home/Home';
+import SingInPage from '../SingInPage/SingInPage.component';
 import Todos from '../Todos/Todos';
 import AppContainer from './AppLayout.style';
 
@@ -27,6 +28,7 @@ function AppLayout() {
             />
           }
         />
+        <Route path="react-todo/sign-in" element={<SingInPage />} />
         <Route path="*" element={<Navigate to="react-todo" />} />
       </Routes>
       <Footer />
