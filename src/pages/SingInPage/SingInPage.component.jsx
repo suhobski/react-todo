@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import Button from '../../components/Button/Button.styles';
 import FormInput from '../../components/formComponents/FormInput/FormInput.component';
-import { FormFooter, FormWrap, SingInPageWrap } from './SignInPage.styles';
+import {
+  FormFooter,
+  FormWrap,
+  SingInPageWrap,
+  PageTitle,
+  Text,
+  StyledLink,
+} from './SignInPage.styles';
 
 function SingInPage() {
   const [email, setEmail] = useState('');
@@ -15,7 +22,7 @@ function SingInPage() {
 
   return (
     <SingInPageWrap>
-      <h2>I already have an account</h2>
+      <PageTitle>I already have an account</PageTitle>
       <p>Sign in with email and password</p>
       <FormWrap onSubmit={handleSubmit}>
         <FormInput
@@ -39,6 +46,10 @@ function SingInPage() {
           <Button type="submit">SIGN IN WITH GOOGLE</Button>
         </FormFooter>
       </FormWrap>
+      <Text>
+        ...or <StyledLink to="/react-todo/sign-up">Sign Up</StyledLink> if you
+        do not have an account
+      </Text>
     </SingInPageWrap>
   );
 }

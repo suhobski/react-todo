@@ -27,6 +27,7 @@ export const Navigation = styled.nav`
 
 export const NavLink = styled(Link)`
   margin-left: 12px;
+  font-size: 16px;
   text-transform: uppercase;
 
   &:hover {
