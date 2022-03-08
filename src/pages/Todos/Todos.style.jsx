@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const TodosContainer = styled.section`
-  padding: 8px;
-`;
+export const TodosContainer = styled.section``;
 
 export const Error = styled.p`
   color: red;

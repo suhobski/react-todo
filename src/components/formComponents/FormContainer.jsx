@@ -5,7 +5,7 @@ const FormContainer = styled.form`
   grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: 12px;
-  margin: 6px 0;
+  margin-bottom: 6px;
   padding: 12px;
   background-color: ${(props) => props.background || '#fff'};
   border: 1px solid #ddd;

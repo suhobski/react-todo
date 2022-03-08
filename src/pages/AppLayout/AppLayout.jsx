@@ -9,12 +9,12 @@ import SingInPage from '../SingInPage/SingInPage.component';
 import Todos from '../Todos/Todos';
 import AppContainer from './AppLayout.style';
 
-function AppLayout() {
+function AppLayout({ currentUser }) {
   const { todos, isPendingTodos, error, submitTodo, removeTodo } = useTodos();
 
   return (
     <AppContainer>
-      <Header />
+      <Header currentUser={currentUser} />
       <Routes>
         <Route path="react-todo" element={<Home />} />
         <Route

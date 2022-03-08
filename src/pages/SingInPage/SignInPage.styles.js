@@ -2,11 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const SingInPageWrap = styled.div`
-  padding: 8px 16px;
-`;
-
-export const PageTitle = styled.h3`
-  margin-bottom: 12px;
+  padding: 8px 0;
 `;
 
 export const FormWrap = styled.form`

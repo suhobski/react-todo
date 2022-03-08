@@ -12,5 +12,8 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
+  display: inline-block;
+  width: 100%;
   font-size: 14px;
+  cursor: pointer;
 `;

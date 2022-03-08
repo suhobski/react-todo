@@ -6,6 +6,7 @@ const AppContainer = styled.div`
   height: 100%;
   max-width: 800px;
   margin: 0 auto;
+  padding: 8px;
   background-color: #eee;
 `;
 

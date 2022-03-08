@@ -5,7 +5,6 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
   border-bottom: 2px solid #65655a;
 
   @media (max-width: 470px) {
@@ -20,7 +19,6 @@ export const HeaderTitle = styled.h1`
 
 export const Navigation = styled.nav`
   display: flex;
-  margin-top: 8px;
   padding: 8px;
   list-style-type: none;
 `;
@@ -29,6 +27,7 @@ export const NavLink = styled(Link)`
   margin-left: 12px;
   font-size: 16px;
   text-transform: uppercase;
+  cursor: pointer;
 
   &:hover {
     color: grey;

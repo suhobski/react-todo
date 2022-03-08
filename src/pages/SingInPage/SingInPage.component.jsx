@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
 import Button from '../../components/Button/Button.styles';
 import FormInput from '../../components/formComponents/FormInput/FormInput.component';
+
 import {
   FormFooter,
   FormWrap,
   SingInPageWrap,
-  PageTitle,
   Text,
   StyledLink,
 } from './SignInPage.styles';
@@ -22,7 +25,7 @@ function SingInPage() {
 
   return (
     <SingInPageWrap>
-      <PageTitle>I already have an account</PageTitle>
+      <h3>I already have an account</h3>
       <p>Sign in with email and password</p>
       <FormWrap onSubmit={handleSubmit}>
         <FormInput
@@ -43,7 +46,9 @@ function SingInPage() {
         />
         <FormFooter>
           <Button type="submit">SIGN IN</Button>
-          <Button type="submit">SIGN IN WITH GOOGLE</Button>
+          <Button google onClick={signInWithGoogle} type="submit">
+            SIGN IN WITH GOOGLE
+          </Button>
         </FormFooter>
       </FormWrap>
       <Text>
