@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 import Button from '../../components/Button/Button.styles';
 import FormInput from '../../components/formComponents/FormInput/FormInput.component';
@@ -17,10 +17,17 @@ function SingInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    setEmail('');
-    setPassword('');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      console.log('error', error.message);
+    }
   };
 
   return (
