@@ -53,7 +53,7 @@ function SingInPage() {
         />
         <FormFooter>
           <Button type="submit">SIGN IN</Button>
-          <Button google onClick={signInWithGoogle} type="submit">
+          <Button google onClick={signInWithGoogle} type="button">
             SIGN IN WITH GOOGLE
           </Button>
         </FormFooter>
